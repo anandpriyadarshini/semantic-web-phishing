@@ -1,0 +1,263 @@
+{
+  "timestamp": "2026-10-10T12:28:12.285541+00:00",
+  "git_commit": "unknown",
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "results": {
+    "RandomForest_domain": {
+      "fidelity_deletion_shap": {
+        "deletion@3": {
+          "mean_drop": 0.5824700546468807,
+          "std_drop": 0.4311909234148465,
+          "median_drop": 0.8731201984984838
+        },
+        "deletion@5": {
+          "mean_drop": 0.6140309288501717,
+          "std_drop": 0.4217004773272898,
+          "median_drop": 0.8731201984984838
+        },
+        "deletion@10": {
+          "mean_drop": 0.5717781506854908,
+          "std_drop": 0.43919025207890433,
+          "median_drop": 0.859090943179335
+        }
+      },
+      "fidelity_deletion_lime": {
+        "deletion@3": {
+          "mean_drop": 0.018154465631667373,
+          "std_drop": 0.03792928300705279,
+          "median_drop": 0.006843564527260065
+        },
+        "deletion@5": {
+          "mean_drop": 0.22483365173789763,
+          "std_drop": 0.16320454379621163,
+          "median_drop": 0.34619047619047616
+        },
+        "deletion@10": {
+          "mean_drop": 0.5189870276967015,
+          "std_drop": 0.4142252457891572,
+          "median_drop": 0.7955877404770111
+        }
+      },
+      "fidelity_insertion_shap": {
+        "insertion@3": {
+          "mean_rise": 0.5089002651214866,
+          "std_rise": 0.42101268421028704,
+          "median_rise": 0.8726400071971571
+        },
+        "insertion@5": {
+          "mean_rise": 0.5382436663335779,
+          "std_rise": 0.4141694521427428,
+          "median_rise": 0.8686400071971571
+        },
+        "insertion@10": {
+          "mean_rise": 0.5381429404528262,
+          "std_rise": 0.4042424022673501,
+          "median_rise": 0.8273994163388307
+        }
+      },
+      "fidelity_insertion_lime": {
+        "insertion@3": {
+          "mean_rise": 0.013700000000000006,
+          "std_rise": 0.01899828939667991,
+          "median_rise": 0.0
+        },
+        "insertion@5": {
+          "mean_rise": 0.21304291392681848,
+          "std_rise": 0.12804787809162468,
+          "median_rise": 0.3148095238095239
+        },
+        "insertion@10": {
+          "mean_rise": 0.4623461531831608,
+          "std_rise": 0.31384400211676594,
+          "median_rise": 0.7203265780730896
+        }
+      },
+      "stability_shap_jaccard@3": {
+        "jaccard_mean": 0.8326,
+        "jaccard_std": 0.30593666011120674,
+        "jaccard_median": 1.0,
+        "n_comparisons": 500,
+        "k": 3,
+        "n_runs": 5
+      },
+      "stability_lime_jaccard@3": {
+        "jaccard_mean": 1.0,
+        "jaccard_std": 0.0,
+        "jaccard_median": 1.0,
+        "n_comparisons": 500,
+        "k": 3,
+        "n_runs": 5
+      },
+      "stability_shap_jaccard@5": {
+        "jaccard_mean": 0.6867142857142858,
+        "jaccard_std": 0.24021756798736785,
+        "jaccard_median": 0.6666666666666666,
+        "n_comparisons": 500,
+        "k": 5,
+        "n_runs": 5
+      },
+      "stability_lime_jaccard@5": {
+        "jaccard_mean": 1.0,
+        "jaccard_std": 0.0,
+        "jaccard_median": 1.0,
+        "n_comparisons": 500,
+        "k": 5,
+        "n_runs": 5
+      },
+      "rank_agreement": {
+        "kendall_tau_mean": -0.07391534391534389,
+        "kendall_tau_std": 0.03880478974816136,
+        "kendall_tau_median": -0.07407407407407407,
+        "mean_p_value": 0.6078364863349855,
+        "n_samples_compared": 100,
+        "interpretation": "Kendall's tau ranges from -1 (complete disagreement) to +1 (complete agreement). Values near 0 indicate independence."
+      },
+      "sparsity_shap": {
+        "mean_sparsity": 0.36535714285714277,
+        "std_sparsity": 0.07556842419088727,
+        "threshold": 0.01,
+        "interpretation": "Sparsity measures what fraction of features have near-zero attribution. Higher = more focused, easier to interpret."
+      },
+      "sparsity_lime": {
+        "mean_sparsity": 1.0,
+        "std_sparsity": 0.0,
+        "threshold": 0.01,
+        "interpretation": "Sparsity measures what fraction of features have near-zero attribution. Higher = more focused, easier to interpret."
+      },
+      "runtime": {
+        "shap_seconds": 0.010459459000000226,
+        "lime_seconds": 2.9571939999999994,
+        "shap_n_samples": 100,
+        "lime_n_samples": 100
+      }
+    },
+    "RandomForest_time": {
+      "fidelity_deletion_shap": {
+        "deletion@3": {
+          "mean_drop": 0.5873779961832062,
+          "std_drop": 0.45068040012731486,
+          "median_drop": 0.885
+        },
+        "deletion@5": {
+          "mean_drop": 0.5968829961832062,
+          "std_drop": 0.4410355888583857,
+          "median_drop": 0.92875
+        },
+        "deletion@10": {
+          "mean_drop": 0.5746267111959288,
+          "std_drop": 0.45376942189630687,
+          "median_drop": 0.9349999999999999
+        }
+      },
+      "fidelity_deletion_lime": {
+        "deletion@3": {
+          "mean_drop": 0.03421402671755725,
+          "std_drop": 0.04187804119536846,
+          "median_drop": 0.020000000000000018
+        },
+        "deletion@5": {
+          "mean_drop": 0.23985979007633595,
+          "std_drop": 0.18836210471967152,
+          "median_drop": 0.38
+        },
+        "deletion@10": {
+          "mean_drop": 0.5372479834605599,
+          "std_drop": 0.4327717770236396,
+          "median_drop": 0.8950190839694656
+        }
+      },
+      "fidelity_insertion_shap": {
+        "insertion@3": {
+          "mean_rise": 0.4937812977099236,
+          "std_rise": 0.40916040479572535,
+          "median_rise": 0.8
+        },
+        "insertion@5": {
+          "mean_rise": 0.5003809160305344,
+          "std_rise": 0.40099711681312894,
+          "median_rise": 0.8199809160305342
+        },
+        "insertion@10": {
+          "mean_rise": 0.5185487277353689,
+          "std_rise": 0.4120623064192848,
+          "median_rise": 0.8382951653944021
+        }
+      },
+      "fidelity_insertion_lime": {
+        "insertion@3": {
+          "mean_rise": 0.005700000000000005,
+          "std_rise": 0.006964912059746347,
+          "median_rise": 0.0
+        },
+        "insertion@5": {
+          "mean_rise": 0.20559999999999998,
+          "std_rise": 0.1459268309804609,
+          "median_rise": 0.31999999999999995
+        },
+        "insertion@10": {
+          "mean_rise": 0.4510066666666666,
+          "std_rise": 0.33012046952589896,
+          "median_rise": 0.72
+        }
+      },
+      "stability_shap_jaccard@3": {
+        "jaccard_mean": 0.828,
+        "jaccard_std": 0.296,
+        "jaccard_median": 1.0,
+        "n_comparisons": 500,
+        "k": 3,
+        "n_runs": 5
+      },
+      "stability_lime_jaccard@3": {
+        "jaccard_mean": 1.0,
+        "jaccard_std": 0.0,
+        "jaccard_median": 1.0,
+        "n_comparisons": 500,
+        "k": 3,
+        "n_runs": 5
+      },
+      "stability_shap_jaccard@5": {
+        "jaccard_mean": 0.6990555555555554,
+        "jaccard_std": 0.23523345471827534,
+        "jaccard_median": 0.6666666666666666,
+        "n_comparisons": 500,
+        "k": 5,
+        "n_runs": 5
+      },
+      "stability_lime_jaccard@5": {
+        "jaccard_mean": 1.0,
+        "jaccard_std": 0.0,
+        "jaccard_median": 1.0,
+        "n_comparisons": 500,
+        "k": 5,
+        "n_runs": 5
+      },
+      "rank_agreement": {
+        "kendall_tau_mean": -0.07158730158730159,
+        "kendall_tau_std": 0.03668353597759324,
+        "kendall_tau_median": -0.06878306878306878,
+        "mean_p_value": 0.6177159983936165,
+        "n_samples_compared": 100,
+        "interpretation": "Kendall's tau ranges from -1 (complete disagreement) to +1 (complete agreement). Values near 0 indicate independence."
+      },
+      "sparsity_shap": {
+        "mean_sparsity": 0.3789285714285715,
+        "std_sparsity": 0.07386816027248017,
+        "threshold": 0.01,
+        "interpretation": "Sparsity measures what fraction of features have near-zero attribution. Higher = more focused, easier to interpret."
+      },
+      "sparsity_lime": {
+        "mean_sparsity": 1.0,
+        "std_sparsity": 0.0,
+        "threshold": 0.01,
+        "interpretation": "Sparsity measures what fraction of features have near-zero attribution. Higher = more focused, easier to interpret."
+      },
+      "runtime": {
+        "shap_seconds": 0.01204316600000066,
+        "lime_seconds": 2.948260458,
+        "shap_n_samples": 100,
+        "lime_n_samples": 100
+      }
+    }
+  }
+}

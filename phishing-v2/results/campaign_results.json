@@ -1,0 +1,253 @@
+{
+  "timestamp": "2026-10-10T13:26:56.488277+00:00",
+  "git_commit": "unknown",
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "results": {
+    "method": "louvain",
+    "resolution": 0.8,
+    "n_nodes": 435,
+    "n_edges": 5168,
+    "n_campaigns_total": 233,
+    "n_campaigns_significant": 24,
+    "min_campaign_size_threshold": 2,
+    "campaign_size_stats": {
+      "all": {
+        "min": 1,
+        "max": 88,
+        "mean": 1.8669527896995708,
+        "median": 1.0,
+        "std": 6.53904599113403
+      },
+      "significant": {
+        "min": 2,
+        "max": 88,
+        "mean": 9.416666666666666,
+        "median": 3.0,
+        "std": 18.750370366712463
+      }
+    },
+    "graph_density": 0.0547486625350919,
+    "n_connected_components": 233,
+    "campaigns": {
+      "157": {
+        "size": 88,
+        "urls": [
+          "http://allegro.12312940.pl",
+          "http://allegro.12312940.pl/",
+          "https://allegro.platnosci840239.sbs",
+          "https://allegrolokalnie.platnosci840239.sbs",
+          "https://appsuite-sunrise-ch.jimdofree.com/",
+          "https://authentwebpassort.jimdofree.com/",
+          "https://bbeyyendndne.jimdofree.com/",
+          "https://feybnjuezzdd.jimdofree.com/",
+          "https://mailsunrise85.jimdofree.com/",
+          "https://sunrise-ch-cjeuadd.jimdofree.com/"
+        ]
+      },
+      "31": {
+        "size": 45,
+        "urls": [
+          "http://chic-cat-ba3c8d.netlify.app/",
+          "http://rbxliy.netlify.app/",
+          "https://atendimento-comercial.netlify.app?gad_source=1&amp;gad_campaignid=24324768182&amp;gbraid=0AAAAA978WLShI4vVzk04yrXrIEk-0d9qO&amp;gclid=EAIaIQobChMI8r6n_b-llwMVDVi4Bx3SdwFaEAMYASAAEgJGV_D_BwE",
+          "https://calm-boba-c03aeb.netlify.app/",
+          "https://chic-cat-ba3c8d.netlify.app/",
+          "https://memes-airdrop-live.netlify.app/?SHERWOOD=8ukASsfiAwGghoMUWTTg81678giwEcpVJeA9VCFjora3",
+          "https://pay-pal.netlify.app/",
+          "https://rbxliy.netlify.app/",
+          "https://zimbrawebmailclientsignin.netlify.app/",
+          "http://legoohiring.vercel.app"
+        ]
+      },
+      "37": {
+        "size": 5,
+        "urls": [
+          "http://www.luckyaceclub-ph.com/account/",
+          "https://www.luckyaceclub-ph.com/",
+          "https://www.luckyaceclub-ph.com/account",
+          "https://www.luckyaceclub-ph.com/account/",
+          "https://www.luckyaceclub-ph.com/account/turnstile-check"
+        ]
+      },
+      "40": {
+        "size": 4,
+        "urls": [
+          "https://51kimspy.xyz/KnaeByNf/",
+          "https://8hmdw5qk.xyz/KnaeByNf/",
+          "https://canjepuntosplus.click/pa",
+          "https://ec-clubmiles.vip/com"
+        ]
+      },
+      "142": {
+        "size": 5,
+        "urls": [
+          "https://allservicerents.com/wp-content/burrhallfarm.html",
+          "https://allservicerents.com/wp-content/semarck.html",
+          "https://hotmail.com-desenrolabrasil481475208@176.189.202.64.host.secureserver.net/desenrola/",
+          "https://hotmail.com-desenrolabrasil638946990@81.190.202.64.host.secureserver.net/desenrola/?email=sinhorinho@outlook.com",
+          "http://lemonlawflorida.org/redirect/index.php"
+        ]
+      },
+      "85": {
+        "size": 20,
+        "urls": [
+          "https://amz-aus-redi.com/",
+          "https://amz-ausredi-pri.com/",
+          "https://jeriugte-ovnsjvso.com/",
+          "https://prime-videorenew-aus.com/",
+          "https://prime-videorenew-aus.com/?r=prime/",
+          "https://prime-videorenew-aus.com/index.php",
+          "https://www.jeriugte-ovnsjvso.com/",
+          "https://be-livraison-info.com/",
+          "https://be-livraison-info.com/index.php",
+          "https://difordlamas.com/"
+        ]
+      },
+      "54": {
+        "size": 4,
+        "urls": [
+          "https://amzn.zcy.ypo.mybluehost.me/Amazon/login.php",
+          "https://website-e5c93d7a.aro.aub.mybluehost.me/",
+          "https://agenciaricco.com/lang/download.html",
+          "https://eightelegance.com.br/amaxg/duyd/appi/"
+        ]
+      },
+      "56": {
+        "size": 2,
+        "urls": [
+          "https://amzxoctobre.com/",
+          "https://amzxoctobre.com/suivi"
+        ]
+      },
+      "77": {
+        "size": 2,
+        "urls": [
+          "https://bagindouris.mystagingwebsite.com/wp-content/plugins/elga115/",
+          "https://vabounickerios.mystagingwebsite.com/wp-content/themes/broungiso/"
+        ]
+      },
+      "80": {
+        "size": 2,
+        "urls": [
+          "https://bancosentander.us.cc/",
+          "https://bancosentander.us.cc/login.php"
+        ]
+      },
+      "217": {
+        "size": 4,
+        "urls": [
+          "https://bio.site/heyxcsf",
+          "https://bio.site/sleralvia",
+          "https://amazingly-cuddly-eagle.edgecompute.app/",
+          "https://veloarb-m.web.app/"
+        ]
+      },
+      "98": {
+        "size": 14,
+        "urls": [
+          "https://bradesco.atendimento-juridico-pj.pro/",
+          "https://bradesco.atendimento-juridicopj.info/",
+          "https://bradesco.pj-cliente-juridico.digital/",
+          "https://bradesco.pj-cliente-juridico.live/",
+          "https://bradesco.pjcliente-juridico.click/",
+          "https://bradesco.pjcliente-juridico.digital/",
+          "https://bradesco.pjcliente-juridico.info/",
+          "https://ecuador-avanza--cajasocialsolic.replit.app",
+          "https://korean-mail-security-landing-page--koreanmail.replit.app/",
+          "https://security-server-page--churchh738.replit.app/"
+        ]
+      },
+      "109": {
+        "size": 4,
+        "urls": [
+          "https://ce270155.tw1.ru/jkouet/",
+          "https://cp359049.tw1.ru/AR24/dvchbdshjnbvjfn/",
+          "https://cq515559.tw1.ru/",
+          "https://gk5440.craftum.io/"
+        ]
+      },
+      "116": {
+        "size": 2,
+        "urls": [
+          "https://domdom24pl.eu.cc/order/inpost/4196315099?m=3814a889",
+          "https://polska22w.eu.cc/pay/personal/iPKO/wXkOMzVz"
+        ]
+      },
+      "128": {
+        "size": 3,
+        "urls": [
+          "https://enregistrement-formalite.fr/",
+          "https://enregistrement-formalite.fr/index.php",
+          "https://ctsorrento.com.ar/irs"
+        ]
+      },
+      "138": {
+        "size": 2,
+        "urls": [
+          "https://googleworkspace.gestioncompte.com/",
+          "https://googleworkspace.gestioncompte.com/index.php"
+        ]
+      },
+      "139": {
+        "size": 2,
+        "urls": [
+          "https://govvaulogonnow.info/",
+          "https://govvaulogonnow.info/cores/Login.html"
+        ]
+      },
+      "144": {
+        "size": 2,
+        "urls": [
+          "https://l.wl.co/l?u=https://newupdtpublicauthaerogmaoerkgvokar.tora.com.ar/?serbesh",
+          "https://l.wl.co/l?u=https://qr-codes.io/5XObyn"
+        ]
+      },
+      "146": {
+        "size": 5,
+        "urls": [
+          "https://land.wbsfulfillment.com/please/",
+          "https://land.wbsfulfillment.com/please/?clientid=h10",
+          "https://login-plesk.canna-medic.eu/contact/bellus/class/index.php",
+          "https://login-plesk.canna-medic.eu/contact/bellus/class/index.php?p=clientid",
+          "https://login-plesk.canna-medic.eu/please.php?token="
+        ]
+      },
+      "151": {
+        "size": 2,
+        "urls": [
+          "https://lplusi.onrender.com",
+          "https://nelistar.onrender.com/?gad_source=1&amp;gad_campaignid=24247974376&amp;gclid=CjwKCAjw_pzWBhAkEiwAwDCi1TvcEi51r2akmC5_xzXebi7pbgaRX-SJyO_wbx5QcuVHZzS5Zre9txoCFEAQAvD_BwE"
+        ]
+      },
+      "153": {
+        "size": 3,
+        "urls": [
+          "https://marobaisa-va.com/maka",
+          "https://pawmaosia-aa.com/?IAZD777S",
+          "https://verifmypsace29-fr.com/SQ01lS9"
+        ]
+      },
+      "161": {
+        "size": 2,
+        "urls": [
+          "https://start-suite.square.site/",
+          "https://xfinity-updateform.square.site/"
+        ]
+      },
+      "219": {
+        "size": 2,
+        "urls": [
+          "https://atualizacaodechat.com",
+          "https://ne12pjempresa.com"
+        ]
+      },
+      "221": {
+        "size": 2,
+        "urls": [
+          "https://bafybeia3m7nb22watkfrdim7bmek3er2dfwgic5hqru2rbvdikkuliijpy.ipfs.inbrowser.link",
+          "https://ipfs.io/ipfs/bafybeia3m7nb22watkfrdim7bmek3er2dfwgic5hqru2rbvdikkuliijpy"
+        ]
+      }
+    }
+  }
+}
