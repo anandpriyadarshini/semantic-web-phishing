@@ -1,0 +1,110 @@
+# ─── Semantic-Web Phishing Detection Framework ─── #
+# All paths, seeds, and hyperparameters in one place.
+
+random_seed: 42
+
+paths:
+  raw_data:       data/raw
+  processed_data: data/processed
+  splits:         data/splits
+  results:        results
+  models:         results/models
+  figures:        results/figures
+  tables:         paper/tables
+  ontology:       src/graph/ontology.ttl
+  graph_output:   results/graph
+
+data:
+  phishtank_url: "http://data.phishtank.com/data/online-valid.csv"
+  tranco_url: "https://tranco-list.eu/top-1m.csv.zip"
+  # For dev loop: limit to this many rows per class (null = all)
+  dev_sample_size: 500
+  min_urls_per_domain: 1
+
+splitting:
+  test_fraction: 0.2
+  val_fraction: 0.1
+  # Time-based split: train on entries before this percentile of timestamps
+  time_split_train_percentile: 80
+  cv_folds: 5
+
+features:
+  # Lexical / structural features (from Table 5 of original paper)
+  lexical:
+    - url_length
+    - hostname_length
+    - path_length
+    - num_dots_in_url
+    - num_dots_in_hostname
+    - num_hyphens_in_url
+    - num_hyphens_in_hostname
+    - num_underscores_in_url
+    - num_slashes_in_path
+    - num_query_params
+    - num_fragments
+    - num_digits_in_url
+    - num_digits_in_hostname
+    - ratio_digits_url
+    - ratio_digits_hostname
+    - has_ip_address
+    - has_at_symbol
+    - has_double_slash_redirect
+    - has_hex_encoding
+    - has_www
+    - has_https
+    - url_entropy
+    - hostname_entropy
+    - longest_token_length
+    - avg_token_length
+    - num_subdomains
+    - tld_length
+    - path_depth
+
+models:
+  classifiers:
+    KNN:
+      n_neighbors: [3, 5, 7, 11]
+      weights: [uniform, distance]
+      metric: [euclidean, manhattan]
+    DecisionTree:
+      max_depth: [5, 10, 20, null]
+      min_samples_split: [2, 5, 10]
+      min_samples_leaf: [1, 2, 5]
+    RandomForest:
+      n_estimators: [100, 200]
+      max_depth: [10, 20, null]
+      min_samples_split: [2, 5]
+      min_samples_leaf: [1, 2]
+  baselines:
+    LogisticRegression:
+      C: [0.01, 0.1, 1.0, 10.0]
+      max_iter: 1000
+    XGBoost:
+      n_estimators: [100, 200]
+      max_depth: [3, 6, 10]
+      learning_rate: [0.01, 0.1, 0.3]
+
+xai:
+  shap_n_samples: 100
+  lime_n_features: 10
+  lime_n_samples: 5000
+  stability_n_runs: 5
+  fidelity_top_k: [3, 5, 10]
+
+enrichment:
+  dns_timeout: 2
+  whois_enabled: false   # python-whois ignores socket timeouts on dead domains; disable for speed
+  whois_timeout: 5
+  whois_rate_limit_seconds: 0.3
+  cert_timeout: 5
+  max_retries: 0
+  cache_dir: data/cache
+
+graph:
+  campaign_resolution: 0.8   # Louvain resolution parameter
+  min_campaign_size: 2
+
+latency:
+  n_stream_urls: 100
+  warmup_urls: 10
+  repetitions: 3

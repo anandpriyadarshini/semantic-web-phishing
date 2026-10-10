@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Data (tracked separately or gitignored for size)
+data/raw/*.csv
+data/raw/*.zip
+data/processed/
+data/splits/
+data/cache/
+
+# Results (auto-generated — never commit hand-edited results)
+results/models/
+results/figures/
+results/graph/
+results/*.json
+results/summary.md
+
+# Keep .gitkeep files
+!**/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
