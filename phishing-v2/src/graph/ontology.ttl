@@ -1,0 +1,174 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix phish: <http://example.org/phishing-ontology#> .
+
+# ───────────────────────────────────────────────────────────────────
+# Ontology Metadata
+# ───────────────────────────────────────────────────────────────────
+<http://example.org/phishing-ontology>
+    a owl:Ontology ;
+    rdfs:label "Phishing Infrastructure Ontology" ;
+    rdfs:comment """
+        An OWL ontology for modeling phishing URL infrastructure.
+        Links phishing URLs to their shared infrastructure components
+        (domains, IPs, ASNs, registrars, certificates, hosting providers)
+        to enable infrastructure correlation and campaign clustering.
+    """ .
+
+# ───────────────────────────────────────────────────────────────────
+# Classes
+# ───────────────────────────────────────────────────────────────────
+
+phish:URL a owl:Class ;
+    rdfs:label "URL" ;
+    rdfs:comment "A phishing or legitimate URL that has been analyzed." .
+
+phish:Domain a owl:Class ;
+    rdfs:label "Domain" ;
+    rdfs:comment "A registered domain name (e.g., example.com)." .
+
+phish:IPAddress a owl:Class ;
+    rdfs:label "IP Address" ;
+    rdfs:comment "An IPv4 or IPv6 address that a domain resolves to." .
+
+phish:ASN a owl:Class ;
+    rdfs:label "Autonomous System Number" ;
+    rdfs:comment "An ASN identifying a network operator." .
+
+phish:Registrar a owl:Class ;
+    rdfs:label "Registrar" ;
+    rdfs:comment "A domain name registrar (e.g., GoDaddy, Namecheap)." .
+
+phish:HostingProvider a owl:Class ;
+    rdfs:label "Hosting Provider" ;
+    rdfs:comment "Inferred from ASN — the organization hosting the IP address." .
+
+phish:Certificate a owl:Class ;
+    rdfs:label "Certificate" ;
+    rdfs:comment "A TLS/SSL certificate associated with a domain." .
+
+phish:Campaign a owl:Class ;
+    rdfs:label "Campaign" ;
+    rdfs:comment """
+        A cluster of phishing URLs sharing infrastructure.
+        Identified by graph-based clustering, NOT by manual attribution.
+        Note: this represents infrastructure correlation, not confirmed
+        attacker identity.
+    """ .
+
+# ───────────────────────────────────────────────────────────────────
+# Object Properties (relationships between entities)
+# ───────────────────────────────────────────────────────────────────
+
+phish:hasDomain a owl:ObjectProperty ;
+    rdfs:label "has domain" ;
+    rdfs:comment "Links a URL to its registered domain." ;
+    rdfs:domain phish:URL ;
+    rdfs:range phish:Domain .
+
+phish:resolvesTo a owl:ObjectProperty ;
+    rdfs:label "resolves to" ;
+    rdfs:comment "Links a domain to the IP address(es) it resolves to via DNS." ;
+    rdfs:domain phish:Domain ;
+    rdfs:range phish:IPAddress .
+
+phish:hostedOn a owl:ObjectProperty ;
+    rdfs:label "hosted on" ;
+    rdfs:comment "Links an IP address to its hosting provider / ASN." ;
+    rdfs:domain phish:IPAddress ;
+    rdfs:range phish:ASN .
+
+phish:registeredBy a owl:ObjectProperty ;
+    rdfs:label "registered by" ;
+    rdfs:comment "Links a domain to the registrar where it was registered." ;
+    rdfs:domain phish:Domain ;
+    rdfs:range phish:Registrar .
+
+phish:usesCertificate a owl:ObjectProperty ;
+    rdfs:label "uses certificate" ;
+    rdfs:comment "Links a domain to a TLS certificate observed for it." ;
+    rdfs:domain phish:Domain ;
+    rdfs:range phish:Certificate .
+
+phish:sharesInfrastructureWith a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "shares infrastructure with" ;
+    rdfs:comment """
+        Inferred relationship: two URLs share at least one infrastructure
+        component (IP, ASN, registrar, certificate issuer). Used as input
+        to campaign clustering.
+    """ ;
+    rdfs:domain phish:URL ;
+    rdfs:range phish:URL .
+
+phish:belongsToCampaign a owl:ObjectProperty ;
+    rdfs:label "belongs to campaign" ;
+    rdfs:comment "Links a URL to its inferred campaign cluster." ;
+    rdfs:domain phish:URL ;
+    rdfs:range phish:Campaign .
+
+# ───────────────────────────────────────────────────────────────────
+# Datatype Properties
+# ───────────────────────────────────────────────────────────────────
+
+phish:urlString a owl:DatatypeProperty ;
+    rdfs:label "URL string" ;
+    rdfs:domain phish:URL ;
+    rdfs:range xsd:string .
+
+phish:label a owl:DatatypeProperty ;
+    rdfs:label "classification label" ;
+    rdfs:comment "1 = phishing, 0 = legitimate" ;
+    rdfs:domain phish:URL ;
+    rdfs:range xsd:integer .
+
+phish:predictionScore a owl:DatatypeProperty ;
+    rdfs:label "prediction score" ;
+    rdfs:comment "ML model prediction probability for phishing class." ;
+    rdfs:domain phish:URL ;
+    rdfs:range xsd:float .
+
+phish:domainName a owl:DatatypeProperty ;
+    rdfs:domain phish:Domain ;
+    rdfs:range xsd:string .
+
+phish:ipValue a owl:DatatypeProperty ;
+    rdfs:domain phish:IPAddress ;
+    rdfs:range xsd:string .
+
+phish:asnNumber a owl:DatatypeProperty ;
+    rdfs:domain phish:ASN ;
+    rdfs:range xsd:string .
+
+phish:asnName a owl:DatatypeProperty ;
+    rdfs:domain phish:ASN ;
+    rdfs:range xsd:string .
+
+phish:registrarName a owl:DatatypeProperty ;
+    rdfs:domain phish:Registrar ;
+    rdfs:range xsd:string .
+
+phish:certSerialNumber a owl:DatatypeProperty ;
+    rdfs:domain phish:Certificate ;
+    rdfs:range xsd:string .
+
+phish:certIssuer a owl:DatatypeProperty ;
+    rdfs:domain phish:Certificate ;
+    rdfs:range xsd:string .
+
+phish:certNotBefore a owl:DatatypeProperty ;
+    rdfs:domain phish:Certificate ;
+    rdfs:range xsd:dateTime .
+
+phish:certNotAfter a owl:DatatypeProperty ;
+    rdfs:domain phish:Certificate ;
+    rdfs:range xsd:dateTime .
+
+phish:campaignId a owl:DatatypeProperty ;
+    rdfs:domain phish:Campaign ;
+    rdfs:range xsd:string .
+
+phish:campaignSize a owl:DatatypeProperty ;
+    rdfs:domain phish:Campaign ;
+    rdfs:range xsd:integer .
