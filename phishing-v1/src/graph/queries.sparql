@@ -1,0 +1,115 @@
+# ───────────────────────────────────────────────────────────────────
+# SPARQL queries for phishing infrastructure correlation
+# Run against the RDF graph built by build_graph.py
+# ───────────────────────────────────────────────────────────────────
+
+PREFIX phish: <http://example.org/phishing-ontology#>
+PREFIX inst:  <http://example.org/phishing-instance#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+
+# ── Query 1: Find all phishing URLs that share an IP address ──────
+# SELECT ?url1 ?url2 ?ip
+# WHERE {
+#     ?u1 a phish:URL ;
+#         phish:urlString ?url1 ;
+#         phish:label "1"^^xsd:integer ;
+#         phish:hasDomain ?d1 .
+#     ?u2 a phish:URL ;
+#         phish:urlString ?url2 ;
+#         phish:label "1"^^xsd:integer ;
+#         phish:hasDomain ?d2 .
+#     ?d1 phish:resolvesTo ?ipNode .
+#     ?d2 phish:resolvesTo ?ipNode .
+#     ?ipNode phish:ipValue ?ip .
+#     FILTER(?u1 != ?u2)
+# }
+
+# ── Query 2: Find all phishing URLs sharing a registrar ───────────
+# SELECT ?url1 ?url2 ?registrar
+# WHERE {
+#     ?u1 a phish:URL ;
+#         phish:urlString ?url1 ;
+#         phish:label "1"^^xsd:integer ;
+#         phish:hasDomain ?d1 .
+#     ?u2 a phish:URL ;
+#         phish:urlString ?url2 ;
+#         phish:label "1"^^xsd:integer ;
+#         phish:hasDomain ?d2 .
+#     ?d1 phish:registeredBy ?regNode .
+#     ?d2 phish:registeredBy ?regNode .
+#     ?regNode phish:registrarName ?registrar .
+#     FILTER(?u1 != ?u2)
+# }
+
+# ── Query 3: Find URLs sharing ASN ────────────────────────────────
+# SELECT ?url1 ?url2 ?asnNumber ?asnName
+# WHERE {
+#     ?u1 a phish:URL ;
+#         phish:urlString ?url1 ;
+#         phish:hasDomain ?d1 .
+#     ?u2 a phish:URL ;
+#         phish:urlString ?url2 ;
+#         phish:hasDomain ?d2 .
+#     ?d1 phish:resolvesTo ?ip1 .
+#     ?d2 phish:resolvesTo ?ip2 .
+#     ?ip1 phish:hostedOn ?asnNode .
+#     ?ip2 phish:hostedOn ?asnNode .
+#     ?asnNode phish:asnNumber ?asnNumber .
+#     OPTIONAL { ?asnNode phish:asnName ?asnName }
+#     FILTER(?u1 != ?u2)
+# }
+
+# ── Query 4: Infrastructure summary per URL ───────────────────────
+# SELECT ?url ?domain ?ip ?asn ?registrar ?certIssuer
+# WHERE {
+#     ?u a phish:URL ;
+#         phish:urlString ?url ;
+#         phish:hasDomain ?d .
+#     ?d phish:domainName ?domain .
+#     OPTIONAL {
+#         ?d phish:resolvesTo ?ipNode .
+#         ?ipNode phish:ipValue ?ip .
+#     }
+#     OPTIONAL {
+#         ?ipNode phish:hostedOn ?asnNode .
+#         ?asnNode phish:asnNumber ?asn .
+#     }
+#     OPTIONAL {
+#         ?d phish:registeredBy ?regNode .
+#         ?regNode phish:registrarName ?registrar .
+#     }
+#     OPTIONAL {
+#         ?d phish:usesCertificate ?certNode .
+#         ?certNode phish:certIssuer ?certIssuer .
+#     }
+# }
+
+# ── Query 5: Count shared infrastructure types between URL pairs ──
+# (Used to build the similarity matrix for campaign clustering)
+# SELECT ?url1 ?url2 (COUNT(DISTINCT ?sharedType) AS ?sharedCount)
+# WHERE {
+#     {
+#         ?u1 phish:hasDomain/phish:resolvesTo ?shared .
+#         ?u2 phish:hasDomain/phish:resolvesTo ?shared .
+#         BIND("IP" AS ?sharedType)
+#     } UNION {
+#         ?u1 phish:hasDomain/phish:registeredBy ?shared .
+#         ?u2 phish:hasDomain/phish:registeredBy ?shared .
+#         BIND("Registrar" AS ?sharedType)
+#     } UNION {
+#         ?u1 phish:hasDomain/phish:resolvesTo/phish:hostedOn ?shared .
+#         ?u2 phish:hasDomain/phish:resolvesTo/phish:hostedOn ?shared .
+#         BIND("ASN" AS ?sharedType)
+#     } UNION {
+#         ?u1 phish:hasDomain/phish:usesCertificate ?shared .
+#         ?u2 phish:hasDomain/phish:usesCertificate ?shared .
+#         BIND("Certificate" AS ?sharedType)
+#     }
+#     ?u1 phish:urlString ?url1 .
+#     ?u2 phish:urlString ?url2 .
+#     ?u1 phish:label "1"^^xsd:integer .
+#     ?u2 phish:label "1"^^xsd:integer .
+#     FILTER(?u1 != ?u2)
+# }
+# GROUP BY ?url1 ?url2
